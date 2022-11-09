@@ -11,6 +11,24 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
+  const magHeader = document.createElement('div');
+  const magDate = document.createElement('span');
+  const magTitle = document.createElement('h1');
+  const magTemp = document.createElement('span');
+
+  magHeader.classList.add('header');
+  magTemp.classList.add('temp');
+  magDate.classList.add('date');
+
+  magTitle.textContent = (title);
+  magDate.textContent = `${date}`;
+  magTemp.textContent = `${temp}`;
+
+  magHeader.appendChild(magTitle);
+  magHeader.appendChild(magTemp);
+  magHeader.appendChild(magDate);
+
+  return magHeader;
 }
 
 const headerAppender = (selector) => {
@@ -26,6 +44,9 @@ const headerAppender = (selector) => {
   // We are taking care of passing in the correct selector on line 16,
   // so all that you need to do is pass it into the querySelector method
   // for the tests to work!
+  const newHeader = Header('Bloomtech Times', 'November 9, 2022', '26')
+  document.querySelector(selector).appendChild(newHeader);
+  return headerAppender;
 }
 
 export { Header, headerAppender }
