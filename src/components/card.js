@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const Card = (article) => {
   // TASK 5
   // ---------------------
@@ -17,13 +19,29 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-  const card = document.createElement('div');
-  const headLine = document.createElement('div');
-  const author = document.createElement('div');
-  const imageContainer = document.createElement('div');
-  const authorPhoto = document.createElement('img-src');
-  const authorName = document.createElement('span');
-  return article;
+  const cardDv = document.createElement('div');
+  const headLineDv = document.createElement('div');
+  const authorDv = document.createElement('div');
+  const imgContainer = document.createElement('div');
+  const authorImg = document.createElement('img');
+  const authorSp = document.createElement('span');
+  
+  cardDv.classList.add('card');
+  headLineDv.classList.add('headline');
+  authorDv.classList.add('author');
+  imgContainer.classlist.add('img-container');
+
+  headLineDv.textContent = article.headLine;
+  authorImg.src = article.authorPhoto;
+  authorSp.textContent = 'By' + article.authorName;
+
+  cardDv.appendChild(headLineDv);
+  cardDv.appendChild(authorDv);
+  authorDv.appendChild(imgContainer);
+  imgContainer.appendChild(authorImg);
+  authorDv.appendChild(authorSp);
+
+  return Card;
 }
 
 const cardAppender = (selector) => {
@@ -35,6 +53,7 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
+  
 }
 
 export { Card, cardAppender }
