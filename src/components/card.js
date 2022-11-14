@@ -1,4 +1,5 @@
 import axios from "axios";
+//import { data } from "msw/lib/types/context";
 
 const Card = (article) => {
   // TASK 5
@@ -19,29 +20,29 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-  const cardDv = document.createElement('div');
-  const headLineDv = document.createElement('div');
-  const authorDv = document.createElement('div');
+  const cardDiv = document.createElement('div');
+  const headLineDiv = document.createElement('div');
+  const authorDiv = document.createElement('div');
   const imgContainer = document.createElement('div');
   const authorImg = document.createElement('img');
-  const authorSp = document.createElement('span');
+  const authorSpan = document.createElement('span');
   
-  cardDv.classList.add('card');
-  headLineDv.classList.add('headline');
-  authorDv.classList.add('author');
-  imgContainer.classlist.add('img-container');
+  cardDiv.classList.add('card');
+  headLineDiv.classList.add('headline');
+  authorDiv.classList.add('author');
+  imgContainer.classList.add('img-container');
 
-  headLineDv.textContent = article.headLine;
+  headLineDiv.textContent = article.headLine;
   authorImg.src = article.authorPhoto;
-  authorSp.textContent = 'By' + article.authorName;
+  authorSpan.textContent = 'By' + article.authorName;
 
-  cardDv.appendChild(headLineDv);
-  cardDv.appendChild(authorDv);
-  authorDv.appendChild(imgContainer);
+  cardDiv.appendChild(headLineDiv);
+  cardDiv.appendChild(authorDiv);
+  authorDiv.appendChild(imgContainer);
   imgContainer.appendChild(authorImg);
-  authorDv.appendChild(authorSp);
+  authorDiv.appendChild(authorSpan);
 
-  return Card;
+  return cardDiv;
 }
 
 const cardAppender = (selector) => {
@@ -53,7 +54,18 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-  
+  axios.get(`http://localhost:5001/api/articles`).then(data => {
+    let articleData = data.data.articles
+    console.log(data)
+    for(let topic in articleData){
+      console.log(topic)
+      data.data.articles[topic].forEach(item => {
+        let newCard = Card(item);
+        const mainSelector = document.querySelector(selector)
+        mainSelector.appendChild(newCard)
+     })
+    }
+  })
 }
 
 export { Card, cardAppender }
