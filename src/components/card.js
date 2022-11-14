@@ -21,22 +21,22 @@ const Card = (article) => {
   // </div>
   //
   const cardDiv = document.createElement('div');
-  const headLineDiv = document.createElement('div');
+  const headlineDiv = document.createElement('div');
   const authorDiv = document.createElement('div');
   const imgContainer = document.createElement('div');
   const authorImg = document.createElement('img');
   const authorSpan = document.createElement('span');
   
   cardDiv.classList.add('card');
-  headLineDiv.classList.add('headline');
+  headlineDiv.classList.add('headline');
   authorDiv.classList.add('author');
   imgContainer.classList.add('img-container');
 
-  headLineDiv.textContent = article.headLine;
+  headlineDiv.textContent = article.headline;
   authorImg.src = article.authorPhoto;
-  authorSpan.textContent = 'By' + article.authorName;
+  authorSpan.textContent = 'By ' + article.authorName;
 
-  cardDiv.appendChild(headLineDiv);
+  cardDiv.appendChild(headlineDiv);
   cardDiv.appendChild(authorDiv);
   authorDiv.appendChild(imgContainer);
   imgContainer.appendChild(authorImg);
@@ -67,5 +67,6 @@ const cardAppender = (selector) => {
     }
   })
 }
+
 
 export { Card, cardAppender }
