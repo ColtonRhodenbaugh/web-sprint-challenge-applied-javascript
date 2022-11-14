@@ -62,7 +62,7 @@ const cardAppender = (selector) => {
       data.data.articles[topic].forEach(item => {
         let newCard = Card(item);
         const mainSelector = document.querySelector(selector)
-        mainSelector.appendChild(newCard)
+      mainSelector.appendChild(newCard)
      })
     }
   })

@@ -12,8 +12,8 @@ const Header = (title, date, temp) => {
   //  </div>
   //
   const magHeader = document.createElement('div');
-  const magDate = document.createElement('span');
   const magTitle = document.createElement('h1');
+  const magDate = document.createElement('span');
   const magTemp = document.createElement('span');
 
   magHeader.classList.add('header');
